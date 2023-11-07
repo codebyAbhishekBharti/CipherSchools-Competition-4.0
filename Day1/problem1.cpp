@@ -47,11 +47,12 @@ Node* reverse(Node* &head, vector<int> v, int i = 0) {
     else head->next = NULL;
     return prev;
 }
-void helper(Node* &head, vector<int> v){
-    if (head == NULL) return;
+Node* helper(Node* &head, vector<int> v){
+    if (head == NULL) return NULL;
     Node* nn = reverse(head, v);
-    head = nn;
-}
+    // head = nn;
+    return nn;
+}   
 int main()
 {
 
@@ -68,7 +69,7 @@ int main()
     cin >> n;
     vector<int>v(n);
     for(int i=0;i<n;i++) cin >> v[i];
-    helper(root, v);
+    root = helper(root, v);
     print(root);
     return 0;
 }
