@@ -30,7 +30,10 @@ void print(Node* root){
 }
 
 Node* reverse(Node* &head, vector<int> v, int i = 0) {
-    if(!head or i>=v.size() or v[i]==0) return head;
+    if(!head or i>=v.size()) return head;
+    while(v[i] == 0 && i <= v.size()-1){
+        i++;
+    }if(i>=v.size()) return head;
     Node* next = NULL;
     Node* prev = NULL;
     Node* current = head;
@@ -40,14 +43,13 @@ Node* reverse(Node* &head, vector<int> v, int i = 0) {
         prev = current;
         current = next;
     }
-
     if (next) head->next = reverse(next, v, ++i);
     else head->next = NULL;
     return prev;
 }
-void helper(Node* &head, vector<int> v, int i = 0){
+void helper(Node* &head, vector<int> v){
     if (head == NULL) return;
-    Node* nn = reverse(head, v, i);
+    Node* nn = reverse(head, v);
     head = nn;
 }
 int main()

@@ -49,7 +49,9 @@ void print(Node* head) {
 }
 
 int main() {
-    int n;
+    int n,x;
+    cin >> x;
+    for(int i=0;i<x;i++){
     cin >> n;
     int data;
     cin >> data;
@@ -62,8 +64,8 @@ int main() {
         newNode->prev = tail;
         tail = newNode;
     }
-    quickSort(head);
+    head = quickSort(head);
     print(head);
-
+    }
     return 0;
 }
